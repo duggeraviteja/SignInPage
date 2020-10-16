@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>DOGS LOVE</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
+   <link rel="icon" href="favicon.ico">
+</head>
+<link rel="icon" type="image" href="images/rlogo.png">
+  <nav class="navbar navbar-default">
+  <div class="container">
+<div class="navbar-header">
+   <p class="navbar-brand">DOGS LOVE</p>
+  </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+<a>
+<div onclick="myFunction()" class="dropbtn"> PETS</div>
+  </a>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="/dogs">DOGS</a>
+        <a href="/cats">CATS</a>
+        <a href="/birds">BIRDS</a>
+    </div>
+            <script>
+            function myFunction() {
+              document.getElementById("myDropdown").classList.toggle("show");
+            }
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+            </script>
+          </li>
+          <li id="home"><a href="/">HOME</a></li>
+          <li id="about"><a href="/about">ABOUT US</a></li>
+          <li id="contact"><a href="/contact">CONTACT US</a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <body>
+    <div class="container">
