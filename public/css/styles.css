@@ -19,7 +19,7 @@ font-size: 30px;
 }
 
 .fletter{
-  font-size: 50px;
+  font-size: 40px;
   color: brown;
 }
 .container-fluid {
@@ -32,8 +32,7 @@ font-size: 30px;
 .navbar {
   border: 0;
   height: 150px;
-    letter-spacing: 2px;
-
+    letter-spacing:2px;
 }
 
 .navbar-default {
@@ -61,8 +60,7 @@ font-size: 30px;
     display: none;
     position: absolute;
   background-color: lightcyan;
-  min-width: 120px;
-  min-height: 120px;
+
 
   }
 
@@ -70,10 +68,13 @@ font-size: 30px;
     color: black;
     padding: 10px 14px;
     text-decoration: none;
-    display: block;
-
+    display: inline-block;
+     white-space: nowrap;
   }
 
+.navbar a{
+  float: right;
+}
 
 
   .show {
@@ -150,7 +151,7 @@ width:100%;
 hr {
   border-style: none;
  border-top-style: dotted;
- border-color: lightcyan;
+ border-color: #2BAB89;
  border-width: 7px;
  width: 5%;
 
