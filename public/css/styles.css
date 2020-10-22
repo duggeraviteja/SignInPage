@@ -25,15 +25,14 @@ font-size: 30px;
 }
 .navbar-brand {
 padding-top: 20px;
-  font-size: 30px;
+  font-size: 25px;
 
 }
 
 .navbar {
-
   border: 0;
   height: 130px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 
 }
 
