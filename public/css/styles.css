@@ -1,7 +1,5 @@
 
-@media (max-width: 640px) {
 
-}
 html{
   position: relative;
 }
@@ -26,7 +24,7 @@ font-size: 30px;
     padding-bottom: 70px;
 }
 .navbar-brand {
-
+padding-top: 20px;
   font-size: 30px;
 
 }
@@ -35,7 +33,7 @@ font-size: 30px;
 
   border: 0;
   height: 130px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
 }
 
@@ -67,17 +65,16 @@ font-size: 30px;
   background-color: lightcyan;
       min-width: 120px;
       min-height: 120px;
-    overflow: auto;
+
   }
 
   .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-decoration: none;
     display: block;
   }
 
-  .dropdown a:hover {background-color: #ddd;}
 
   .show {
     display: block;
