@@ -250,7 +250,6 @@ div.gallery {
   margin: 20px;
   border: 2px solid orange;
   float: left;
-
 }
 
 div.gallery:hover {
@@ -258,8 +257,8 @@ div.gallery:hover {
 }
 
 div.gallery img {
-  width: 450px;
-  height:450px;
+  width: 500px;
+  height: 500px;
 }
 
 div.desc {
@@ -271,7 +270,6 @@ div.gallery a{
   background-color: DodgerBlue;
   border: none;
   color: white;
-    padding: 10px 20px;
   cursor: pointer;
   font-size: 18px;
   text-decoration: none;
