@@ -218,8 +218,6 @@ padding-bottom: 10px;
 
 
  .card{
-width:66%;
-height: auto;
  border: 3px solid green;
  padding-left: 10px;
  padding-right: 10px;
@@ -230,7 +228,7 @@ overflow: hidden;
  }
 
 .card pre{
-  white-space:pre;
+  white-space:pre-wrap;
   overflow:hidden;
 }
 .card h4{
@@ -238,17 +236,18 @@ overflow: hidden;
 }
 
  .dog-img {
-   width:25%;
-   height: auto;
+    width: 20%;
+    height: auto;
    border:1px solid red;
  border-radius: 50%;
  margin: 10px;
  align-content:left;
  float:right;
+ margin: 10px;
+
  }
 .dog-info {
 border: solid red;
-text-align: center;
 
 }
 
@@ -267,8 +266,8 @@ div.gallery:hover {
 }
 
 div.gallery img {
-  width: 450px;
-  height:450px;
+  width: 350px;
+  height:250px;
 }
 
 div.desc {
