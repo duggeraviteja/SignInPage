@@ -75,6 +75,7 @@ font-size: 30px;
 .navbar li{
 position:relative;
    float: right;
+   padding-right: 10px;
 }
 
 .Benifits  {
