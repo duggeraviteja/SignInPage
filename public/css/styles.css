@@ -37,6 +37,7 @@ font-size: 30px;
 
 .navbar-default {
   background-color: lightcyan;
+  width: 100%;
   }
   /*--dropdown--*/
 
@@ -217,7 +218,7 @@ padding-bottom: 10px;
 
 
  .card{
-width:55%;
+width:66%;
 height: auto;
  border: 3px solid green;
  padding-left: 10px;
@@ -227,15 +228,23 @@ height: auto;
 float: left;
 overflow: hidden;
  }
+
+.card pre{
+  white-space:pre;
+  overflow:hidden;
+}
+.card h4{
+  text-align: center;
+}
+
  .dog-img {
-   width:60%;
+   width:25%;
    height: auto;
    border:1px solid red;
  border-radius: 50%;
  margin: 10px;
- align-content: center;
- float: none;
- overflow: hidden;
+ align-content:left;
+ float:right;
  }
 .dog-info {
 border: solid red;
