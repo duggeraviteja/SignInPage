@@ -5,6 +5,7 @@
     width: 100%;
   }
 }
+
 html{
   position: relative;
 }
@@ -78,18 +79,13 @@ position:relative;
    padding-right: 10px;
 }
 
-.Benifits  {
 
-  padding: 10px;
-  margin:10px;
-  letter-spacing: 1.5px;
-font-size: 1px;
-}
 p{
 
 font-size: 18px;
 
 }
+
 /*  dropdown End */
 
 
@@ -215,7 +211,6 @@ padding-bottom: 10px;
   margin: 100px auto 100px auto;
 
 }
-
 
  .card{
 height: auto;
