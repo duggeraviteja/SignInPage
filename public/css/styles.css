@@ -83,13 +83,13 @@ position:relative;
   padding: 10px;
   margin:10px;
   letter-spacing: 1.5px;
-font-size: 18px;
+font-size: 15px;
 }
 p{
   padding: 10px;
   margin:10px;
 font-size: 18px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 /*  dropdown End */
 
@@ -219,22 +219,18 @@ padding-bottom: 10px;
 
 
  .card{
-
-   width:55%;
+   margin-right: 50px;
+   margin-bottom: 50px;
+   padding-left: 10px;
+   padding-right: 10px;
 height: auto;
- border: 3px solid green;
- padding-left: 6px;
- padding-right: 6px;
- margin-bottom: 6px;
- margin: 6px;
-float: left;
 overflow: hidden;
+word-wrap: break-word;
+text-overflow:clip;
+
  }
 
-.card pre{
-  white-space:pre-wrap;
-  overflow:hidden;
-}
+
 .card h4{
   text-align: center;
 }
@@ -243,8 +239,9 @@ overflow: hidden;
     width: 20%;
    border:1px solid red;
  border-radius: 50%;
- margin: 6px;
+ margin: 10px;
  float:right;
+
 
 
  }
