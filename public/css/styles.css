@@ -92,11 +92,11 @@ font-size: 18px;
 /*  footer starting */
 
 .footer {
-	position: absolute;
+	position: fixed;
 	text-align: center;
 width:100%;
+bottom: 0;
 }
-
 .footer p,a {
 	margin-top: 18px;
 	font-size: 12px;
@@ -282,3 +282,55 @@ div.gallery a:hover{
     background-color: RoyalBlue;
 }
 /* End gallery */
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+    margin: auto;
+    padding: auto;
+    display:block;
+    width: 50%;
+
+}
+.btn-google {
+    background-color: red;
+    color: #fff;
+    margin: auto;
+padding:auto;
+display:block;
+width: 50%;
+
+}
+
+div.container-form{
+  padding: 30px;
+  background-position: center;
+  display:list-item;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  padding: auto;
+  display:flex;
+  margin:auto;
+}
+.form-user{
+  float: left;
+  padding:10px;
+  margin: auto;
+}
+.form-box{
+  float: left;
+  margin: auto;
+}
+.text-center ,.re{
+  font-family: Arial;
+  font-style:oblique;
+  color:skyblue;
+  text-decoration: none;
+  font-size: 20px;
+
+
+}
+/* end of signup */
