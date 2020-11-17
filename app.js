@@ -63,7 +63,7 @@ const CLIENT_SECRET="cZjbzaaYb8TX48e6Vq5xo-0s";
 passport.use(new GoogleStrategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets",
+    callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/google/pets",
     userProfileUrl: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -81,7 +81,7 @@ const FACEBOOK_APP_SECRET="c6aba59c8d6682ce040049c3233452c5";
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/pets"
+    callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/facebook/pets"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ id: profile.id,username:profile.displayName }, function (err, user) {
@@ -151,14 +151,6 @@ app.get("/auth/google/secrets",
       res.redirect("signinoption");
     }
   });
-
-app.get("/contact", function(req, res){
-  if (req.isAuthenticated()){
-    res.render("contact");
-  } else {
-    res.redirect("signinoption");
-  }
-});
 
 app.get("/gallery", function(req, res){
   if (req.isAuthenticated()){

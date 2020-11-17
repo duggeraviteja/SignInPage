@@ -76,7 +76,7 @@ font-size: 30px;
 .navbar li{
 position:relative;
    float: right;
-   padding-right: 10px;
+   padding-right:2px;
 }
 
 
@@ -92,10 +92,10 @@ font-size: 18px;
 /*  footer starting */
 
 .footer {
-	position: fixed;
 	text-align: center;
 width:100%;
 bottom: 0;
+
 }
 .footer p,a {
 	margin-top: 18px;
@@ -165,7 +165,6 @@ margin: auto;
 .footer-link{
   font-size: 2rem;
   margin: auto;
-
 }
 .link-img {
 margin : 10px;
@@ -287,18 +286,18 @@ div.gallery a:hover{
     background-color: #405D9D;
     color: #fff;
     margin: auto;
-    padding: auto;
+    padding:10px;
     display:block;
-    width: 50%;
+    width: 66%;
 
 }
 .btn-google {
     background-color: red;
     color: #fff;
     margin: auto;
-padding:auto;
+padding:10px;
 display:block;
-width: 50%;
+width: 66%;
 
 }
 
