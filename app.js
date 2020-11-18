@@ -10,7 +10,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require("passport-facebook");
 const InstagramStrategy = require("passport-instagram");
 
-
 const app = express();
 app.set('view engine', 'ejs');
 
@@ -27,6 +26,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+
  mongoose.connect("mongodb://admin-ravi:raviteja7899@cluster0-shard-00-00.nvc77.mongodb.net:27017,cluster0-shard-00-01.nvc77.mongodb.net:27017,cluster0-shard-00-02.nvc77.mongodb.net:27017/DOGSLOVE?ssl=true&replicaSet=atlas-jky30g-shard-0&authSource=admin&retryWrites=true&w=majority", {useNewUrlParser: true,useUnifiedTopology: true});
 
 mongoose.set("useCreateIndex", true);
@@ -34,8 +35,10 @@ mongoose.set("useCreateIndex", true);
 const userSchema = new mongoose.Schema ({
   username :String,
   mobile :String,
+  displayName:String,
   email: String,
   id:String,
+  address:String,
   password: String
 });
 
@@ -207,7 +210,7 @@ app.post("/register", function(req, res){
       res.redirect("register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("home");
+              res.redirect("home");
       });
     }
   });

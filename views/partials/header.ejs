@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0 user-scalable=no" />
 
   <title>PETS LOVE</title>
 
@@ -15,52 +15,57 @@
   <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
 
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
   <link rel="icon" type="image" href="images/rlogo.png">
-   <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
 
 
 </head>
 
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
   <div class="container">
-<div class="navbar-header">
-   <p class="navbar-brand">PETS💙</p>
-  </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="logout"> <a href="/logout">LOGOUT</a></li>
-          <li>
-<a>
-<div onclick="myFunction()" class="dropbtn"> PETS</div>
-  </a>
-    <div id="myDropdown" class="dropdown-content">
-      <a href="/dogs">DOGS</a>
-        <a href="/cats">CATS</a>
-        <a href="/birds">BIRDS</a>
+    <div class="navbar-header">
+      <p class="navbar-brand">₱€৳₷🦜</p>
     </div>
-            <script>
-            function myFunction() {
-              document.getElementById("myDropdown").classList.toggle("show");
-            }
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(event) {
-              if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
-                  if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                  }
+    <ul class="nav navbar-nav navbar-right">
+      <li id="logout"> <a href="/logout">LOGOUT</a></li>
+      <li>
+        <a>
+          <div onclick="myFunction()" class="dropbtn"> PETS</div>
+        </a>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/dogs">DOGS</a>
+          <a href="/cats">CATS</a>
+          <a href="/birds">BIRDS</a>
+          <a href="/gallery">GALLERY</a>
+        </div>
+        <script>
+          function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+          // Close the dropdown if the user clicks outside of it
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
                 }
               }
             }
-            </script>
-          </li>
-          <li id="home"> <a href="/home">HOME</a></li>
-          <li id="about"> <a href="/about">ABOUT</a></li>
-        </ul>
-    </div>
-  </nav>
+          }
+        </script>
+      </li>
+      <li id="home"> <a href="/home">HOME</a></li>
+      <li id="about"> <a href="/about">ABOUT</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <body>
-    <div class="container">
+<body>
+  <div class="container">
