@@ -32,7 +32,6 @@ app.use(passport.session());
 
 
  mongoose.connect("mongodb://admin-ravi:raviteja7899@cluster0-shard-00-00.nvc77.mongodb.net:27017,cluster0-shard-00-01.nvc77.mongodb.net:27017,cluster0-shard-00-02.nvc77.mongodb.net:27017/DOGSLOVE?ssl=true&replicaSet=atlas-jky30g-shard-0&authSource=admin&retryWrites=true&w=majority", {useNewUrlParser: true,useUnifiedTopology: true});
-
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
@@ -286,5 +285,5 @@ app.post("/login", function(req, res){
 });
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("Server started on port 3000");
+  // console.log("Server started on port 3000");
 });
