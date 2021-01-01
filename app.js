@@ -8,7 +8,12 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require("passport-facebook");
-const InstagramStrategy = require("passport-instagram");
+
+const Swal = require('sweetalert2');
+const birdsdata=require("./bidrsdata.js");
+const data = require('./data.js');
+const catsdata = require('./catsdata.js');
+
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -27,7 +32,6 @@ app.use(passport.session());
 
 
 
-
  mongoose.connect("mongodb://admin-ravi:raviteja7899@cluster0-shard-00-00.nvc77.mongodb.net:27017,cluster0-shard-00-01.nvc77.mongodb.net:27017,cluster0-shard-00-02.nvc77.mongodb.net:27017/DOGSLOVE?ssl=true&replicaSet=atlas-jky30g-shard-0&authSource=admin&retryWrites=true&w=majority", {useNewUrlParser: true,useUnifiedTopology: true});
 
 mongoose.set("useCreateIndex", true);
@@ -39,13 +43,16 @@ const userSchema = new mongoose.Schema ({
   email: String,
   id:String,
   address:String,
-  password: String
+  password: String,
+  created :{type:Date, default:Date.now()}
 });
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+module.exports = User;
+var ObjectId = require('mongodb').ObjectID;
 
 passport.use(User.createStrategy());
 
@@ -70,7 +77,8 @@ passport.use(new GoogleStrategy({
     userProfileUrl: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ id: profile.id,username:profile.displayName,email:profile.emails,mobile:profile.phone},
+    console.log(profile);
+    User.findOrCreate({ id: profile.id,displayName:profile.displayName,username:profile.emails,mobile:profile.phone,image:profile.picture},
        function (err, user) {
       return cb(err, user);
     });
@@ -87,7 +95,7 @@ passport.use(new FacebookStrategy({
     callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/facebook/pets"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ id: profile.id,username:profile.displayName }, function (err, user) {
+    User.findOrCreate({ id: profile.id,username:profile.emails,displayName:profile.displayName }, function (err, user) {
       return cb(err, user);
     });
   }
@@ -97,6 +105,7 @@ passport.use(new FacebookStrategy({
 app.get("/", function(req, res){
   if (req.isAuthenticated()){
     res.render("home");
+
   } else {
     res.redirect("/signinoption");
   }
@@ -110,7 +119,9 @@ app.get("/auth/google",
 app.get("/auth/google/pets",
   passport.authenticate('google', { failureRedirect: "/login" }),
   function(req, res) {
-    // Successful authentication, redirect to secrets.
+    // Successful authentication, redirect to secrets
+
+
     res.redirect("/home");
   });
 
@@ -122,7 +133,6 @@ app.get("/auth/google/pets",
   app.get('/auth/facebook/pets',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function(req, res) {
-      // Successful authentication, redirect home.
       res.redirect('/');
     });
 
@@ -132,17 +142,13 @@ app.get("/auth/google/pets",
   });
 
 
-
   app.get("/login", function(req, res){
+
     res.render("login");
   });
 
   app.get("/register",function(req,res){
     res.render("register");
-  });
-
-  app.get("/profile",function(req,res){
-    res.render("profile");
   });
 
 
@@ -155,6 +161,9 @@ app.get("/auth/google/pets",
     }
   });
 
+
+
+
 app.get("/gallery", function(req, res){
   if (req.isAuthenticated()){
     res.render("gallery");
@@ -163,9 +172,10 @@ app.get("/gallery", function(req, res){
   }
 });
 
+
 app.get("/dogs", function(req, res){
   if (req.isAuthenticated()){
-    res.render("dogs");
+    res.render("dogs",{data:data});
   } else {
     res.redirect("signinoption");
   }
@@ -173,7 +183,7 @@ app.get("/dogs", function(req, res){
 
 app.get("/cats", function(req, res){
   if (req.isAuthenticated()){
-    res.render("cats");
+    res.render("cats",{catsdata:catsdata});
   } else {
     res.redirect("signinoption");
   }
@@ -181,7 +191,7 @@ app.get("/cats", function(req, res){
 
 app.get("/birds", function(req, res){
   if (req.isAuthenticated()){
-    res.render("birds");
+    res.render("birds",{birdsdata:birdsdata});
   } else {
     res.redirect("signinoption");
   }
@@ -195,16 +205,60 @@ app.get("/logout", function(req, res){
 
 app.get("/home", function(req, res){
   if (req.isAuthenticated()){
-    res.render("home");
+    res.render("home",{ isAdded : true });
   } else {
     res.redirect("signinoption");
   }
 });
 
+app.get('/profile', function(req, res) {
+
+if(req.isAuthenticated()){
+  const _id = ObjectId(req.session.passport.user._id);
+    User.find({_id:_id}, function(err, data) {
+        res.render("profile", {
+            user : req.user,
+            userdata: data
+        });
+    });
+  } else{
+    res.redirect("signinoption");
+  }
+});
+
+app.get("/update", function(req, res){
+  if (req.isAuthenticated()){
+    res.render("update",{username:req.session.passport.user.username});
+    Swal.fire('Hello world!');
+  } else {
+    res.redirect("login");
+  }
+});
+
+app.post("/update",function(req,res){
+  const _id = ObjectId(req.session.passport.user._id);
+  User.findOneAndUpdate({_id:_id }, {$set:{
+    displayName:req.body.displayName,
+    address:req.body.address,
+    mobile:req.body.mobile,
+    currentCity:req.body.currentCity
+  }},
+  {new: true,useFindAndModify: false},function (err, data){
+res.render("home");
+    // res.render("profile", {
+    //     user : req.user,
+    //     userdata: data
+    // });
+});
+});
+
+
+
+
+
 
 app.post("/register", function(req, res){
-
-  User.register({username: req.body.username},  req.body.password, function(err, user){
+  User.register({username: req.body.username,mobile:req.body.mobile,displayName:req.body.displayName,address:req.body.address},  req.body.password, function(err, user){
     if (err) {
       console.log(err);
       res.redirect("register");
@@ -214,28 +268,27 @@ app.post("/register", function(req, res){
       });
     }
   });
+
 });
 
 
 app.post("/login", function(req, res){
-
   const user = new User({
     username: req.body.username,
     password: req.body.password
   });
-
   req.login(user, function(err){
     if (err) {
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
+        // const _id = ObjectId(req.session.passport.user._id);
+        // console.log(_id);
         res.redirect("home");
       });
     }
   });
 });
-
-
 
 app.listen(process.env.PORT || 3000, function() {
   console.log("Server started on port 3000");

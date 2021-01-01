@@ -1,0 +1,62 @@
+<%- include("partials/header"); -%>
+
+
+<div className="container-fluid">
+  <div className="row m-2">
+  <div class="col-md-8 col-12 mx-auto m-2 p-2">
+<h2> Fill  the details to update your profile</h2>
+<h4>Note:You cannot change your email address</h4>
+
+  <table class="table tbl">
+    <tbody>
+      <form class="form-control" action="/update" method="post">
+        <tr>
+          <th>Name</th><br />
+          <td>
+            <input type="text" name="displayName"  placeholder="FullName"autofocus required/>
+          </td>
+        </tr>
+
+        <tr class="table-success">
+          <th>Email</th>
+          <td><%=username %></td>
+        </tr>
+
+        <tr>
+          <th>Address</th>
+          <td>
+            <input type="text" name="address" placeholder="address" required/>
+          </td>
+        </tr>
+        <tr>
+
+          <th>Mobile</th>
+          <td>
+            <input type="tel" name="mobile"  placeholder="Mobile" required/>
+          </td>
+        </tr>
+        <tr>
+          <th>CurrentCity</th><br />
+          <td>
+            <input type="text" name="currentCity"   placeholder="currentCity" required/>
+          </td>
+        </tr>
+
+
+        <tr>
+          <th> <a href="/logout" class="btn btn-primary" >LOGOUT</a> </th>
+          <td>  <a> <button type="submit" class="btn btn-primary ">update Profile</button></a>
+           </td>
+        </tr>
+      </form>
+    </tbody>
+
+</table>
+</div>
+</div>
+
+</div>
+
+
+
+<%- include("partials/footer"); -%>
