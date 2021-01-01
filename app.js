@@ -85,11 +85,12 @@ passport.use(new GoogleStrategy({
 
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.envFACEBOOK_APP_SECRET,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/facebook/pets"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ id: profile.id,username:profile.emails,displayName:profile.displayName }, function (err, user) {
+     console.log(profile);
       return cb(err, user);
     });
   }
@@ -223,7 +224,6 @@ if(req.isAuthenticated()){
 app.get("/update", function(req, res){
   if (req.isAuthenticated()){
     res.render("update",{username:req.session.passport.user.username});
-    Swal.fire('Hello world!');
   } else {
     res.redirect("login");
   }
