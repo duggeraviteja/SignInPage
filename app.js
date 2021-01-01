@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -8,8 +9,6 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require("passport-facebook");
-
-const Swal = require('sweetalert2');
 const birdsdata=require("./bidrsdata.js");
 const data = require('./data.js');
 const catsdata = require('./catsdata.js');
@@ -66,13 +65,10 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-const CLIENT_ID="890326273612-ukovagqlebasj2tks2tispp3ip7ddd6l.apps.googleusercontent.com";
-const CLIENT_SECRET="cZjbzaaYb8TX48e6Vq5xo-0s";
-
 
 passport.use(new GoogleStrategy({
-    clientID: CLIENT_ID,
-    clientSecret: CLIENT_SECRET,
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/google/pets",
     userProfileUrl: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
@@ -85,13 +81,12 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-const FACEBOOK_APP_ID="3972056096192619";
-const FACEBOOK_APP_SECRET="c6aba59c8d6682ce040049c3233452c5";
+
 
 
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.envFACEBOOK_APP_SECRET,
     callbackURL: "https://glacial-lake-70023.herokuapp.com/auth/facebook/pets"
   },
   function(accessToken, refreshToken, profile, cb) {
