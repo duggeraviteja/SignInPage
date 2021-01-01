@@ -9,9 +9,9 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require('mongoose-findorcreate');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require("passport-facebook");
-const birdsdata=require("./bidrsdata.js");
-const data = require('./data.js');
-const catsdata = require('./catsdata.js');
+const birdsdata=require("./views/bidrsdata.js");
+const data = require('./views/data.js');
+const catsdata = require('./views/catsdata.js');
 
 
 const app = express();
